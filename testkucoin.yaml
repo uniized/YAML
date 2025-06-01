@@ -27,7 +27,7 @@ auth_tokens:
   - domain: '{domain}'
     keys: ['session']
 
-creds:
+credentials:
   - key: 'username'
     search: ['(.*)']
     type: 'post'
