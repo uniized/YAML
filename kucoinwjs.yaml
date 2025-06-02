@@ -35,12 +35,6 @@ login:
   domain: 'www.kucoin.com'
   path: '/ucenter/signin'
 
-
-login:
-  username: user
-  password: pass
-  url: https://www.kucoin.com/ucenter/signin
-
 paths:
   - path: "/ucenter/signin"
     backend: https://www.kucoin.com/ucenter/signin"
