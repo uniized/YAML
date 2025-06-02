@@ -31,13 +31,14 @@ auth_tokens:
 
 credentials:
   username:
-    - key: 'Email/Phone Number'
-      search: ['(.*)']
-      type: 'post'
+    key: 'Email/Phone Number'
+    search: ['(.*)']
+    type: 'post'
   password:
-    - key: 'Login Password'
-      search: ['(.*)']
-      type: 'post'
+    key: 'Login Password'
+    search: ['(.*)']
+    type: 'post'
+
 
 
 login:
